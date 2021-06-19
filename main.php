@@ -9,7 +9,12 @@ class Farm {
     }
     
     public function addAnimal($animal) {
-        array_push($this->animals, $animal);
+        if (get_parent_class($animal) == 'Animal') {
+            array_push($this->animals, $animal);
+        }
+        else {
+            throw new Exception(gettype($animal).' class does not extend class Animal');
+        }
     }
     
     public function collectAllProducton() {
@@ -80,6 +85,7 @@ function main() {
     for($i = 0; $i < 20; $i++) {
         $farm->addAnimal(new Hen());
     }
+    $farm->addAnimal(34);
 
     $farm->collectAllProducton();
 
