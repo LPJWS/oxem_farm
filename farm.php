@@ -5,25 +5,20 @@ class Farm
     private array $animals;
     private array $production;
     
-    public function __construct()
-    {
+    public function __construct() {
         $this->animals = array();
         $this->production = array();
     }
     
-    public function addAnimal(Animal $animal): void
-    {
+    public function addAnimal(Animal $animal): void {
         array_push($this->animals, $animal);
     }
     
-    public function collectAllProducton(): void
-    {
+    public function collectAllProducton(): void {
         $res = array();
-        foreach ($this->animals as $animal) 
-        {
+        foreach ($this->animals as $animal) {
             $apt = $animal->getProductionType();
-            if (!array_key_exists($apt, $res)) 
-            {
+            if (!array_key_exists($apt, $res)) {
                 $res[$apt] = 0;
             }
             $res[$apt] += $animal->collectProduction();
@@ -31,8 +26,7 @@ class Farm
         $this->production = $res;
     }
 
-    public function getProduction(): array
-    {
+    public function getProduction(): array {
         return $this->production;
     }
 }
