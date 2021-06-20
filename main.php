@@ -4,11 +4,6 @@ spl_autoload_register(function ($class_name) {
     include $class_name . '.php';
 });
 
-function generateId() 
-{
-    return substr(str_shuffle(MD5(microtime())), 0, 10);
-}
-
 function main() 
 {
     $farm = new Farm();

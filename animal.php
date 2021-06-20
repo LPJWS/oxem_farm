@@ -9,7 +9,7 @@ class Animal
     
     public function __construct()
     {
-        $this->id = generateId();
+        $this->id = $this->generateId();
     }
 
     public function collectProduction(): int
@@ -22,4 +22,8 @@ class Animal
         return $this->productionType;
     }
 
+    private static function generateId() 
+    {
+        return substr(str_shuffle(MD5(microtime())), 0, 10);
+    }
 }
